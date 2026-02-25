@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gh-image-uploader",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-02-25",
+  "compatibility_flags": ["nodejs_compat"],
+  "r2_buckets": [
+    { "binding": "IMAGE_BUCKET", "bucket_name": "gh-pr-images" }
+  ],
+  "vars": {
+    "MAX_FILE_SIZE_MB": "10"
+  },
+  "durable_objects": {
+    "bindings": [
+      { "name": "ImageUploaderMCP", "class_name": "ImageUploaderMCP" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["ImageUploaderMCP"] }
+  ]
+}
