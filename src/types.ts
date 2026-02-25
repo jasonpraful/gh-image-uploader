@@ -24,6 +24,7 @@ export type AllowedImageType = (typeof ALLOWED_IMAGE_TYPES)[number];
 export type AllowedVideoType = (typeof ALLOWED_VIDEO_TYPES)[number];
 
 export interface MediaMetadata {
+  repo: string;
   branch: string;
   originalFilename: string;
   uploadedAt: string;
@@ -37,6 +38,7 @@ export interface UploadResponse {
   success: true;
   key: string;
   url: string;
+  repo: string;
   branch: string;
   filename: string;
 }

@@ -6,12 +6,11 @@
       "dependencies": {
         "agents": "^0.6.0",
         "hono": "^4.12.2",
-        "hono-agents": "^3.0.6",
         "zod": "^4.3.6",
       },
       "devDependencies": {
         "@types/node": "^25.3.0",
-        "wrangler": "^4.4.0",
+        "wrangler": "^4.68.1",
       },
     },
   },
@@ -301,8 +300,6 @@
     "hasown": ["hasown@2.0.2", "", { "dependencies": { "function-bind": "^1.1.2" } }, "sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ=="],
 
     "hono": ["hono@4.12.2", "", {}, "sha512-gJnaDHXKDayjt8ue0n8Gs0A007yKXj4Xzb8+cNjZeYsSzzwKc0Lr+OZgYwVfB0pHfUs17EPoLvrOsEaJ9mj+Tg=="],
-
-    "hono-agents": ["hono-agents@3.0.6", "", { "peerDependencies": { "agents": "^0.6.0", "hono": "^4.6.17" } }, "sha512-h45Wv0U/1yTutKe6UiJDSOR/23CT+3hObth8FxgghCs0N33/74DA3OwrE0t8m2MQ7174xpJQ6Gs/BZ5+FpthLw=="],
 
     "http-errors": ["http-errors@2.0.1", "", { "dependencies": { "depd": "~2.0.0", "inherits": "~2.0.4", "setprototypeof": "~1.2.0", "statuses": "~2.0.2", "toidentifier": "~1.0.1" } }, "sha512-4FbRdAX+bSdmo4AUFuS0WNiPz8NgFt+r8ThgNWmlrjQjt1Q7ZR9+zTlce2859x4KSXrwIsaeTqDoKQmtP8pLmQ=="],
 

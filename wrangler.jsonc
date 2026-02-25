@@ -5,17 +5,42 @@
   "compatibility_date": "2026-02-25",
   "compatibility_flags": ["nodejs_compat"],
   "r2_buckets": [
-    { "binding": "IMAGE_BUCKET", "bucket_name": "gh-pr-images" }
+    {
+      "binding": "IMAGE_BUCKET",
+      "bucket_name": "gh-pr-images"
+    }
   ],
   "vars": {
-    "MAX_FILE_SIZE_MB": "10"
+    "MAX_FILE_SIZE_MB": "10",
+    "WORKER_URL": "https://gh-image-uploader.jasonpraful.workers.dev"
   },
   "durable_objects": {
     "bindings": [
-      { "name": "ImageUploaderMCP", "class_name": "ImageUploaderMCP" }
+      {
+        "name": "MCP_OBJECT",
+        "class_name": "ImageUploaderMCP"
+      }
     ]
   },
   "migrations": [
-    { "tag": "v1", "new_sqlite_classes": ["ImageUploaderMCP"] }
-  ]
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["ImageUploaderMCP"]
+    }
+  ],
+  "observability": {
+    "enabled": false,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": true,
+      "persist": true,
+      "head_sampling_rate": 1
+    }
+  }
 }

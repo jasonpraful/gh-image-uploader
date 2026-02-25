@@ -9,11 +9,10 @@
   "dependencies": {
     "agents": "^0.6.0",
     "hono": "^4.12.2",
-    "hono-agents": "^3.0.6",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/node": "^25.3.0",
-    "wrangler": "^4.4.0"
+    "wrangler": "^4.68.1"
   }
 }

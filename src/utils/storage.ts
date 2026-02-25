@@ -11,16 +11,18 @@ function sanitize(input: string): string {
 }
 
 /**
- * Generate an R2 storage key: `{sanitized-branch}/{timestamp}-{sanitized-filename}`
+ * Generate an R2 storage key: `{sanitized-repo}/{sanitized-branch}/{timestamp}-{sanitized-filename}`
  */
 export function generateStorageKey(
+  repo: string,
   branch: string,
   filename: string
 ): string {
+  const sanitizedRepo = sanitize(repo);
   const sanitizedBranch = sanitize(branch);
   const sanitizedFilename = sanitize(filename);
   const timestamp = Date.now();
-  return `${sanitizedBranch}/${timestamp}-${sanitizedFilename}`;
+  return `${sanitizedRepo}/${sanitizedBranch}/${timestamp}-${sanitizedFilename}`;
 }
 
 /**
@@ -47,9 +49,11 @@ export function isAllowedImageType(
 export function buildImageUrl(
   baseUrl: string,
   key: string,
+  repo: string,
   branch: string
 ): string {
   const url = new URL(`/images/${key}`, baseUrl);
+  url.searchParams.set("repo", repo);
   url.searchParams.set("branch", branch);
   return url.toString();
 }
