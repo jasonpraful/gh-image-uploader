@@ -11,7 +11,7 @@
     }
   ],
   "vars": {
-    "MAX_FILE_SIZE_MB": "10",
+    "MAX_FILE_SIZE_MB": "150",
     "WORKER_URL": "https://gh-image-uploader.jasonpraful.workers.dev"
   },
   "durable_objects": {
