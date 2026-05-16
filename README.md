@@ -98,6 +98,8 @@ Add to your MCP config:
 
 **Videos:** `video/mp4`, `video/webm`, `video/quicktime`
 
+**Text:** `text/plain`, `text/html`
+
 Max upload size: 100 MB.
 
 ## Development
