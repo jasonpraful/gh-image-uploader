@@ -14,9 +14,15 @@ export const ALLOWED_VIDEO_TYPES = [
   "video/quicktime",
 ] as const;
 
+export const ALLOWED_TEXT_TYPES = [
+  "text/plain",
+  "text/html"
+]
+
 export const ALLOWED_CONTENT_TYPES = [
   ...ALLOWED_IMAGE_TYPES,
   ...ALLOWED_VIDEO_TYPES,
+  ...ALLOWED_TEXT_TYPES
 ] as const;
 
 export type AllowedContentType = (typeof ALLOWED_CONTENT_TYPES)[number];
