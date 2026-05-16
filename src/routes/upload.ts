@@ -25,7 +25,7 @@ upload.post(
     }
     if (!isAllowedContentType(file.type)) {
       return c.json<ErrorResponse>(
-        { success: false, error: `Unsupported content type: ${file.type}. Allowed: image/png, image/jpeg, image/gif, image/webp, image/svg+xml, video/mp4, video/webm, video/quicktime` },
+        { success: false, error: `Unsupported content type: ${file.type}. Allowed: image/png, image/jpeg, image/gif, image/webp, image/svg+xml, video/mp4, video/webm, video/quicktime, text/plain, text/html` },
         400
       );
     }
