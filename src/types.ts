@@ -28,6 +28,7 @@ export const ALLOWED_CONTENT_TYPES = [
 export type AllowedContentType = (typeof ALLOWED_CONTENT_TYPES)[number];
 export type AllowedImageType = (typeof ALLOWED_IMAGE_TYPES)[number];
 export type AllowedVideoType = (typeof ALLOWED_VIDEO_TYPES)[number];
+export type AllowedTextType = (typeof ALLOWED_TEXT_TYPES)[number];
 
 export interface MediaMetadata {
   repo: string;
