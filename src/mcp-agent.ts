@@ -62,12 +62,12 @@ export class ImageUploaderMCP extends McpAgent<CloudflareBindings> {
       }
     );
 
-    // Tool 2: get_upload_command — returns curl command for HTTP multipart upload (any file type)
+    // Tool 2: get_upload_command — returns curl command for HTTP multipart upload (any supported file type)
     this.server.registerTool(
       "get_upload_command",
       {
         description:
-          "Get a ready-to-run curl command for uploading a file via the HTTP endpoint. Use this for videos, large images, or any file too large for base64 MCP transfer. No authentication required.",
+          "Get a ready-to-run curl command for uploading a file via the HTTP endpoint. Use this for videos, HTML files, large images, or any file too large for base64 MCP transfer. No authentication required.",
         inputSchema: {
           filename: z.string().describe("Filename, e.g. demo.mp4 or screenshot.png"),
           repo: z.string().describe("Repository name, e.g. owner/repo"),
@@ -94,9 +94,10 @@ export class ImageUploaderMCP extends McpAgent<CloudflareBindings> {
           curlCommand,
           "```",
           "",
-          `The response JSON will contain a \`url\` you can embed directly in markdown:`,
+          `The response JSON will contain a \`url\` you can publish in markdown:`,
           "```markdown",
           `![${filename}](<url-from-response>)`,
+          `<url-from-response>`,
           "```",
           "",
           `### Supported types`,
@@ -109,11 +110,11 @@ export class ImageUploaderMCP extends McpAgent<CloudflareBindings> {
       }
     );
 
-    // Tool 3: get_image_url — get serving URL for an existing image or video
+    // Tool 3: get_image_url — get serving URL for an existing uploaded asset
     this.server.registerTool(
       "get_image_url",
       {
-        description: "Get the serving URL for a previously uploaded image or video",
+        description: "Get the serving URL for a previously uploaded image, video, or HTML asset",
         inputSchema: {
           key: z.string().describe("The R2 storage key returned from upload"),
         },
@@ -141,7 +142,7 @@ export class ImageUploaderMCP extends McpAgent<CloudflareBindings> {
     this.server.registerTool(
       "list_images",
       {
-        description: "List all uploaded images and videos for a given repo and branch",
+        description: "List all uploaded assets (images, videos, text/html, text/plain) for a given repo and branch",
         inputSchema: {
           repo: z.string().describe("Repository name, e.g. owner/repo"),
           branch: z.string().describe("Git branch name to list uploads for"),
