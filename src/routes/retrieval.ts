@@ -28,6 +28,20 @@ retrieval.get("/images/*", async (c) => {
 
   const headers = new Headers();
   object.writeHttpMetadata(headers);
+  const storedContentType = object.customMetadata?.contentType;
+  const resolvedContentType = headers.get("content-type") ?? storedContentType;
+  if (resolvedContentType) {
+    headers.set("Content-Type", resolvedContentType);
+  }
+
+  const isHtmlAsset = resolvedContentType?.toLowerCase().startsWith("text/html");
+  if (isHtmlAsset) {
+    if (!resolvedContentType?.toLowerCase().includes("charset=")) {
+      headers.set("Content-Type", "text/html; charset=utf-8");
+    }
+    headers.set("Content-Disposition", "inline");
+  }
+
   headers.set("Cache-Control", "public, max-age=31536000, immutable");
 
   return new Response(object.body, { headers });
